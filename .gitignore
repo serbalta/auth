@@ -1,0 +1,16 @@
+# Java
+*.class
+*.jar
+*.war
+*.ear
+/target
+**/target/
+
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# OS-specific
+.DS_Store
+Thumbs.db
