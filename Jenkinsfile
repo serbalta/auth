@@ -28,8 +28,8 @@ pipeline {
         
          stage('Docker-Build'){
             steps{
-            sh 'docker build -t serbalta/backend .'
-            sh 'docker build -t serbalta/frontend .'
+                    sh 'docker build -t serbalta/backend ./backend'
+                    sh 'docker build -t serbalta/frontend ./frontend'
             }
         }
     }
