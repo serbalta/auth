@@ -2,7 +2,7 @@ pipeline {
     agent any
     tools {
         maven 'Maven 3.9.7'
-        nodeJs 'NodeJs 22.2.0'
+        nodeJs 'NodeJs 22'
     }
     stages {
         stage('Checkout') {
