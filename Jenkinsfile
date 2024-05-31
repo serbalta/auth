@@ -3,8 +3,9 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                    sshagent(['GitHub']) {
-                    // Git deposunu klonlama
+               
+                sshagent(['GitHub']) {
+                   
                     checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], userRemoteConfigs: [[url: 'git@github.com:serbalta/auth.git']]])
                 }
             }
@@ -13,11 +14,11 @@ pipeline {
             steps {
                 sshagent(['GitHub']) {
                     dir('auth') {
-                     
+                       
                         sh 'git config user.email "salih.773@gmail.com"'
-                        sh 'git config user.name "salihbalta"'
+                        sh 'git config user.name "saliherbalta"'
                         
-             
+                     
                         sh 'git status'
                         sh 'echo "Yeni içerik" >> README.md'
                         sh 'git add README.md'
