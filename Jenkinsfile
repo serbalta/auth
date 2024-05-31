@@ -8,7 +8,7 @@ pipeline {
         }
          stage('git'){
             steps{
-            git 'https://github.com/serbalta/auth.git'
+            sh 'git clone git@github.com:serbalta/auth.git'
             }
         }
     }
