@@ -9,6 +9,8 @@ pipeline {
          stage('Git Operations'){
             steps{
              dir('auth') {
+                    sh 'git config user.email salih.773@gmail.com'
+                    sh 'git config user.name serbalta'
                     sh 'git status'
                     sh 'echo "Yeni içerik" >> README.md'
                     sh 'git add README.md'
