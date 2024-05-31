@@ -11,7 +11,7 @@ pipeline {
         }
         stage('Git Operations') {
             steps {
-                sshagent(['github-ssh-key']) {
+                sshagent(['GitHub']) {
                     dir('auth') {
                      
                         sh 'git config user.email "salih.773@gmail.com"'
