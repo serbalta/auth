@@ -4,7 +4,7 @@ pipeline {
         stage('Checkout') {
             steps {
                     checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], userRemoteConfigs: [[url: 'git@github.com:serbalta/auth.git', credentialsId: 'GitHub']]])
-                    cd 'backend'    
+                    sh 'cd backend'    
                     sh 'mvn clean install'
             }
         }
