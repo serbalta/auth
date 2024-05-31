@@ -15,8 +15,8 @@ pipeline {
                 sshagent(['GitHub']) {
                     dir('auth') {
                        
-                        sh 'git config user.email "salih.773@gmail.com"'
-                        sh 'git config user.name "saliherbalta"'
+                        sh 'git config user.email salih.773@gmail.com'
+                        sh 'git config user.name saliherbalta'
                         
                      
                         sh 'git status'
