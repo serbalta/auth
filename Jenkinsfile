@@ -6,5 +6,10 @@ pipeline {
                     checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], userRemoteConfigs: [[url: 'git@github.com:serbalta/auth.git', credentialsId: 'GitHub']]])
             }
         }
+         stage('git'){
+            steps{
+            git 'https://github.com/serbalta/auth.git'
+            }
+        }
     }
 }
