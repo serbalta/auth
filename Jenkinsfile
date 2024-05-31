@@ -8,8 +8,13 @@ pipeline {
         }
          stage('Git Operations'){
             steps{
-             sh 'git clone git@github.com:serbalta/auth.git'
-             sh 'git status'
+             dir('auth') {
+                    sh 'git status'
+                    sh 'echo "Yeni içerik" >> README.md'
+                    sh 'git add README.md'
+                    sh 'git commit -m "README dosyası güncellendi"'
+                    sh 'git push origin master'
+                }
             }
         }
     }
