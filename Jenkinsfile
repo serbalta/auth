@@ -3,6 +3,7 @@ pipeline {
     tools {
         maven 'Maven 3.9.7'
         nodejs 'NodeJs 22.2.0'
+        docker 'Docker'
     }
     stages {
         stage('Checkout') {
@@ -26,9 +27,10 @@ pipeline {
             }
         }
         
-         stage('git'){
+         stage('Docker-Build'){
             steps{
-            git 'https://github.com/serbalta/auth.git'
+            sh 'docker build -t serbalta/backend .'
+            sh 'docker build -t serbalta/frontend .'
             }
         }
     }
