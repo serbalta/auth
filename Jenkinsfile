@@ -3,9 +3,8 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-               
                 sshagent(['GitHub']) {
-                   
+                    
                     checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], userRemoteConfigs: [[url: 'git@github.com:serbalta/auth.git']]])
                 }
             }
@@ -14,9 +13,9 @@ pipeline {
             steps {
                 sshagent(['GitHub']) {
                     dir('auth') {
-                       
-                        sh 'git config user.email salih.773@gmail.com'
-                        sh 'git config user.name serbalta'
+                        
+                        sh 'git config user.email "salih.773@gmail.com"'
+                        sh 'git config user.name "serbalta"'
                         
                      
                         sh 'git status'
