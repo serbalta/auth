@@ -8,7 +8,7 @@ pipeline {
         }
          stage('git'){
             steps{
-            git 'https://github.com/serbalta/firstwebapp.git'
+            git 'https://github.com/serbalta/auth.git'
             }
         }
     }
