@@ -16,6 +16,14 @@ pipeline {
                 }
             }
         }
+
+        stage('Build-Frontend') {
+            steps {
+                dir('frontend') {
+                    sh 'npm install'
+                }
+            }
+        }
         
          stage('git'){
             steps{
