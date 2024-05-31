@@ -3,7 +3,7 @@ pipeline {
     tools {
         maven 'Maven 3.9.7'
         nodejs 'NodeJs 22.2.0'
-        dockerTool 'Docker'
+        docker 'latest'
     }
     stages {
         stage('Checkout') {
