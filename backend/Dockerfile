@@ -11,6 +11,9 @@ COPY mvnw ./
 COPY .mvn .mvn
 COPY pom.xml ./
 
+# mvnw dosyasına çalıştırma izni ver
+RUN chmod +x ./mvnw
+
 # Bağımlılıkları indir
 RUN ./mvnw dependency:resolve
 
