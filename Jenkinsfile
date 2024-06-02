@@ -5,6 +5,8 @@ pipeline {
         nodejs 'NodeJs 22.2.0'
     }
         environment {
+        dockerBackendImage = ''
+        dockerFrontendImage = ''
         DOCKER_CREDENTIALS_ID = 'DockerHub' 
         DOCKERHUB_REPO_BACKEND = 'serbalta/backend'
         DOCKERHUB_REPO_FRONTEND = 'serbalta/frontend'
@@ -18,23 +20,22 @@ pipeline {
         
          stage('Docker-Backend-Build'){
             steps{
-                    sh 'docker build -t $DOCKERHUB_REPO_BACKEND ./backend'
+                    dockerFrontendImage = docker.build DOCKERHUB_REPO_BACKEND + ":$BUILD_NUMBER"
              }
         }
 
         stage('Docker-Frontend-Build'){
             steps{
-                    sh 'docker build -t $DOCKERHUB_REPO_FRONTEND ./frontend'
+                    dockerFrontendImage = docker.build DOCKERHUB_REPO_FRONTEND + ":$BUILD_NUMBER"
             }
         }
         
         stage('Docker-Push') {
             steps {
                 script {
-                    docker.withRegistry('https://index.docker.io/v1/', DOCKER_CREDENTIALS_ID) {
-                        sh 'docker push $DOCKERHUB_REPO_BACKEND'
-                        sh 'docker push $DOCKERHUB_REPO_FRONTEND'
-                    }
+                    docker.withRegistry( '', registryCredential ) {
+                    dockerBackendImage.push()
+                    dockerFrontendImage.push()    
                 }
             }
         }
