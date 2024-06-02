@@ -42,7 +42,11 @@ pipeline {
             }
         }
        stage('Run docker-compose'){
+             steps {
+                script {
             sh 'docker-compose up -d'
+             }
+          }
        }
     }
 }
