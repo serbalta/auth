@@ -18,13 +18,13 @@ pipeline {
         
          stage('Docker-Backend-Build'){
             steps{
-                    sh 'docker build -t DOCKERHUB_REPO_BACKEND ./backend'
+                    sh 'docker build -t $DOCKERHUB_REPO_BACKEND ./backend'
              }
         }
 
         stage('Docker-Frontend-Build'){
             steps{
-                    sh 'docker build -t DOCKERHUB_REPO_FRONTEND ./frontend'
+                    sh 'docker build -t $DOCKERHUB_REPO_FRONTEND ./frontend'
             }
         }
         
