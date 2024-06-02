@@ -31,7 +31,7 @@ pipeline {
         stage('Docker-Push') {
             steps {
                 script {
-                    docker.withRegistry('', DOCKER_CREDENTIALS_ID) {
+                    docker.withRegistry('https://index.docker.io/v1/', DOCKER_CREDENTIALS_ID) {
                         sh 'docker push $DOCKERHUB_REPO_BACKEND'
                         sh 'docker push $DOCKERHUB_REPO_FRONTEND'
                     }
