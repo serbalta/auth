@@ -34,8 +34,10 @@ pipeline {
         stage('Docker-Push') {
             steps {
                 script {
-                    dockerBackendImage.push()
-                    dockerFrontendImage.push()
+                  docker.withRegistry('', DOCKER_CREDENTIALS_ID) {
+                        dockerBackendImage.push()
+                        dockerFrontendImage.push()
+                    }
                 }
             }
         }
