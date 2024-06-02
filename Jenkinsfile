@@ -34,10 +34,10 @@ pipeline {
         stage('Docker-Push') {
             steps {
                 script {
-                    def backendHash = dockerBackendImage.id()
-                    def frontendHash = dockerFrontendImage.id()
-                    def backendExists = sh(script: "docker images -q ${DOCKERHUB_REPO_BACKEND}:$BUILD_NUMBER", returnStdout: true).trim()
-                    def frontendExists = sh(script: "docker images -q ${DOCKERHUB_REPO_FRONTEND}:$BUILD_NUMBER", returnStdout: true).trim()
+                     backendHash = dockerBackendImage.id()
+                     frontendHash = dockerFrontendImage.id()
+                     backendExists = sh(script: "docker images -q ${DOCKERHUB_REPO_BACKEND}:$BUILD_NUMBER", returnStdout: true).trim()
+                     frontendExists = sh(script: "docker images -q ${DOCKERHUB_REPO_FRONTEND}:$BUILD_NUMBER", returnStdout: true).trim()
 
                     if (backendHash != backendExists) {
                         docker.withRegistry('', DOCKER_CREDENTIALS_ID) {
