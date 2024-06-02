@@ -20,7 +20,7 @@ pipeline {
         
          stage('Docker-Backend-Build'){
             steps{
-                    dockerFrontendImage = docker.build DOCKERHUB_REPO_BACKEND + ":$BUILD_NUMBER"
+                    dockerBackendImage = docker.build DOCKERHUB_REPO_BACKEND + ":$BUILD_NUMBER"
              }
         }
 
