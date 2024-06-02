@@ -52,7 +52,7 @@ pipeline {
        stage('Run docker-compose'){
              steps {
                 script {
-             sh 'docker-compose up -d'
+             sh 'docker-compose -f /var/jenkins_home/workspace/Login/docker-compose.yml up -d'
              }
           }
        }
