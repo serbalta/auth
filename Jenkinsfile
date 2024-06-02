@@ -33,7 +33,7 @@ pipeline {
         stage('Docker-Push') {
             steps {
                 script {
-                    docker.withRegistry( '', registryCredential ) {
+                    docker.withRegistry( '', DOCKER_CREDENTIALS_ID ) {
                     dockerBackendImage.push()
                     dockerFrontendImage.push()    
                 }
