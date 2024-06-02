@@ -34,26 +34,8 @@ pipeline {
         stage('Docker-Push') {
             steps {
                 script {
-                     backendHash = dockerBackendImage.id()
-                     frontendHash = dockerFrontendImage.id()
-                     backendExists = sh(script: "docker images -q ${DOCKERHUB_REPO_BACKEND}:$BUILD_NUMBER", returnStdout: true).trim()
-                     frontendExists = sh(script: "docker images -q ${DOCKERHUB_REPO_FRONTEND}:$BUILD_NUMBER", returnStdout: true).trim()
-
-                    if (backendHash != backendExists) {
-                        docker.withRegistry('', DOCKER_CREDENTIALS_ID) {
-                            dockerBackendImage.push()
-                        }
-                    } else {
-                        echo "Backend image has not changed. Skipping push."
-                    }
-
-                    if (frontendHash != frontendExists) {
-                        docker.withRegistry('', DOCKER_CREDENTIALS_ID) {
-                            dockerFrontendImage.push()
-                        }
-                    } else {
-                        echo "Frontend image has not changed. Skipping push."
-                    }
+                    dockerBackendImage.push()
+                    dockerFrontendImage.push()
                 }
             }
         }
