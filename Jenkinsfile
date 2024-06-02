@@ -41,10 +41,18 @@ pipeline {
                 }
             }
         }
+        stage('Check docker-compose file') {
+            steps {
+                script {
+                    sh 'ls -l'
+                    sh 'cat docker-compose.yml'
+                }
+            }
+        }
        stage('Run docker-compose'){
              steps {
                 script {
-             sh 'docker-compose -f docker-compose.yml up -d'
+             sh 'docker-compose up -d'
              }
           }
        }
