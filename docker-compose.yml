@@ -14,6 +14,8 @@ services:
       - db_data:/var/lib/postgresql/data
     networks:
       - app-network
+    env_file:
+      - .env
 
   backend:
     build:
@@ -28,6 +30,8 @@ services:
       - db
     networks:
       - app-network
+    env_file:
+      - .env
       
   frontend:
     build:
@@ -38,11 +42,12 @@ services:
       - backend
     networks:
       - app-network
-         
+    env_file:
+      - .env
+
 volumes:
   db_data:
   
 networks:
   app-network:
     driver: bridge
-
